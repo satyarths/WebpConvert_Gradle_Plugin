@@ -34,10 +34,10 @@ class WebpConvertBuildPlugin implements Plugin<Project> {
                 project.task(webpConvertPlugin) << {
 
                     String resPath = "${project.buildDir}/generated/res/pngs"
-                    if( flavor != null ){
+                    if( flavor?.trim()){
                      resPath += "/${flavor}"
                     }
-                    if(buildType != null){
+                    if(buildType?.trim()){
                         resPath += "/${buildType}"
                     }
                     println "resPath:" + resPath
