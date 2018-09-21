@@ -1,9 +1,9 @@
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
 
-def siteUrl = 'https://github.com/mogujie'      // 项目的主页
-def gitUrl = 'https://github.com/mogujie'   // Git仓库的url
-group = "com.mogujie.gradle"  // Maven Group ID for the artifact，一般填你唯一的包名
-version = "1.1.34"
+def siteUrl = 'https://github.com/satyarths/WebpConvert_Gradle_Plugin'      // 项目的主页
+def gitUrl = 'https://github.com/satyarths/WebpConvert_Gradle_Plugin'   // Git仓库的url
+group = "com.satyarth.s"  // Maven Group ID for the artifact，一般填你唯一的包名
+version = "0.0.1"
 
 install {
     repositories.mavenInstaller {
@@ -23,9 +23,9 @@ install {
                 }
                 developers {
                     developer {
-                        id 'boyue'		//填写的一些基本信息
-                        name 'boyue'
-                        email 'daydayupon360@gmail.com'
+                        id 'satyarth'		//填写的一些基本信息
+                        name 'satyarth'
+                        email 'satyarth.23@gmail.com'
                     }
                 }
                 scm {
@@ -52,20 +52,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "webp_convert_gradle_plugin"	//发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["MIT"]
-        publish = true
-    }
 }
