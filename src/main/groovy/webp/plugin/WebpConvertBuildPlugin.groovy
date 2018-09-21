@@ -32,7 +32,7 @@ class WebpConvertBuildPlugin implements Plugin<Project> {
                 def webpConvertPlugin = "webpConvertPlugin${variant.name.capitalize()}"
                 project.task(webpConvertPlugin) << {
 
-                    String resPath = "${project.buildDir}/generated/res/png"
+                    String resPath = "${project.buildDir}/generated/res/pngs"
                     if( flavor != null ){
                      resPath += "/${flavor}"
                     }
