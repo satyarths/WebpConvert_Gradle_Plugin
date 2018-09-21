@@ -28,7 +28,7 @@ class WebpConvertBuildPlugin implements Plugin<Project> {
                     return
                 }
 
-                def dx = project.tasks.findByName("generate${variant.name.capitalize()}Resources")
+                def dx = project.tasks.findByName("package${variant.name.capitalize()}Resources")
                 def webpConvertPlugin = "webpConvertPlugin${variant.name.capitalize()}"
                 project.task(webpConvertPlugin) << {
 
