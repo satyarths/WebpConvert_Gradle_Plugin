@@ -31,7 +31,14 @@ class WebpConvertBuildPlugin implements Plugin<Project> {
                 def dx = project.tasks.findByName("process${variant.name.capitalize()}Resources")
                 def webpConvertPlugin = "webpConvertPlugin${variant.name.capitalize()}"
                 project.task(webpConvertPlugin) << {
-                    String resPath = "${project.buildDir}/intermediates/res/${flavor}/${buildType}"
+
+                    String resPath = "${project.buildDir}/generated/res/png"
+                    if( flavor != null ){
+                     resPath += "/${flavor}"
+                    }
+                    if(buildType != null){
+                        resPath += "/${buildType}"
+                    }
                     println "resPath:" + resPath
                     def dir = new File("${resPath}")
                     dir.eachDirMatch(~/drawable[a-z0-9-]*/) { drawDir ->
