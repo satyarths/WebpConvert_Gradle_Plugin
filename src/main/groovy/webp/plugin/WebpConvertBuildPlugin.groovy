@@ -28,7 +28,8 @@ class WebpConvertBuildPlugin implements Plugin<Project> {
                     return
                 }
 
-                def dx = project.tasks.findByName("merge${variant.name.capitalize()}Resources")
+                def dx = hasApp ? project.tasks.findByName("process${variant.name.capitalize()}Resources") :project.tasks.findByName("merge${variant.name.capitalize()}Resources")                    
+                
 
                 def webpConvertPlugin = "webpConvertPlugin${variant.name.capitalize()}"
                 project.task(webpConvertPlugin) << {
